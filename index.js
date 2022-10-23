@@ -65,3 +65,40 @@ var yesOrNo = function (value, def) {
     return /^(y|yes)$/i.test(value) ? true : /^(n|no)$/i.test(value) ? false : def;
 };
 console.log(yesOrNo('Y'));
+// 11. Write a JavaScript program to find all elements in a given array except for the first one. Return the whole array if the array's length is 1
+var findElements = function (arr) {
+    if (arr.length === 1) {
+        return arr;
+    }
+    return arr.slice(1);
+};
+console.log(findElements([7, 5, 6, 8, 9]));
+console.log(findElements([7]));
+// 12. Write a JavaScript program to get a random number in the specified range.
+var random_Number_In_Range = function (min, max) {
+    var random = Math.random() * max;
+    return random < min ? min : random;
+};
+console.log(random_Number_In_Range(2, 10));
+// 13. Write a JavaScript program to get an array of given n random integers in the specified range.
+var random_intArray_In_Range = function (min, max, n) {
+    if (n === void 0) { n = 1; }
+    return Array.from({ length: n }, function () {
+        return Math.floor(random_Number_In_Range(min, max));
+    });
+};
+console.log(random_intArray_In_Range(1, 20, 10));
+// 14. Write a JavaScript program to get a random integer in the specified range.
+var randomIntegerInRange = function (min, max) {
+    return Math.floor(random_Number_In_Range(min, max));
+};
+console.log(randomIntegerInRange(0, 5));
+console.log(randomIntegerInRange(2, 5));
+// 15. Write a JavaScript program to pad a string on both sides with the specified character, if it's shorter than the specified length.
+var pad = function (str, length, char) {
+    if (char === void 0) { char = ' '; }
+    var lengthToAdd = (length - str.length) / 2;
+    var valueToAdd = char.repeat(lengthToAdd);
+    return "".concat(valueToAdd).concat(str).concat(valueToAdd);
+};
+console.log(pad(String(42), 6, '0'));

@@ -1,5 +1,6 @@
 // 1. Write a JavaScript program to compare two objects to determine if the first one contains
 // equivalent property values to the second one
+
 const compareObjects = (
     obj1: Record<string, any>,
     obj2: Record<string, any>
@@ -92,3 +93,49 @@ const yesOrNo = (value: string, def = false): boolean =>
     /^(y|yes)$/i.test(value) ? true : /^(n|no)$/i.test(value) ? false : def;
 
 console.log(yesOrNo('Y'));
+
+// 11. Write a JavaScript program to find all elements in a given array except for the first one. Return the whole array if the array's length is 1
+const findElements = <T>(arr: T[]): T[] => {
+    if (arr.length === 1) {
+        return arr;
+    }
+
+    return arr.slice(1);
+};
+
+console.log(findElements([7, 5, 6, 8, 9]));
+console.log(findElements([7]));
+
+// 12. Write a JavaScript program to get a random number in the specified range.
+const random_Number_In_Range = (min: number, max: number): number => {
+    const random = Math.random() * max;
+
+    return random < min ? min : random;
+};
+
+console.log(random_Number_In_Range(2, 10));
+
+// 13. Write a JavaScript program to get an array of given n random integers in the specified range.
+const random_intArray_In_Range = (min: number, max: number, n = 1): number[] =>
+    Array.from({ length: n }, () =>
+        Math.floor(random_Number_In_Range(min, max))
+    );
+
+console.log(random_intArray_In_Range(1, 20, 10));
+
+// 14. Write a JavaScript program to get a random integer in the specified range.
+const randomIntegerInRange = (min: number, max: number): number =>
+    Math.floor(random_Number_In_Range(min, max));
+
+console.log(randomIntegerInRange(0, 5));
+console.log(randomIntegerInRange(2, 5));
+
+// 15. Write a JavaScript program to pad a string on both sides with the specified character, if it's shorter than the specified length.
+const pad = (str: string, length: number, char = ' '): string => {
+    const lengthToAdd = (length - str.length) / 2;
+    const valueToAdd = char.repeat(lengthToAdd);
+
+    return `${valueToAdd}${str}${valueToAdd}`;
+};
+
+console.log(pad(String(42), 6, '0'));
