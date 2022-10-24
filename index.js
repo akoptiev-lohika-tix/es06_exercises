@@ -102,3 +102,39 @@ var pad = function (str, length, char) {
     return "".concat(valueToAdd).concat(str).concat(valueToAdd);
 };
 console.log(pad(String(42), 6, '0'));
+// 16. Write a JavaScript program to create an array of key-value pair arrays from a given object.
+var object_to_pairs = function (obj) {
+    return Object.entries(obj);
+};
+console.log(object_to_pairs({ a: 1, b: 2, c: 3 }));
+// 17. Write a JavaScript program to remove the key-value pairs corresponding to the given keys from an object.
+var omit = function (obj, arr) {
+    return Object.entries(obj).filter(function (item) { return item[0] !== arr[0]; });
+};
+console.log(omit({ a: 1, b: '2', c: 3 }, ['b']));
+// 18. Write a JavaScript program to create an object from the given key-value pairs.
+var object_From_Pairs = function (arr) {
+    var result = {};
+    arr.forEach(function (item) {
+        result[item[0]] = item[1];
+    });
+    return result;
+};
+console.log(object_From_Pairs([
+    ['a', 1],
+    ['b', 2],
+]));
+// 19.Write a JavaScript program to remove falsey values from a given array.
+var removeFalsey = function (arr) {
+    return arr.filter(function (item) { return Boolean(item); });
+};
+console.log(removeFalsey([0, 1, false, 2, '', 3, 'a', 'e', 23, NaN, 's', 34]));
+// 20. Write a JavaScript program to split values into two groups, if an element in filter is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
+var splitToGroups = function (arr, filter) {
+    var result = [[], []];
+    arr.forEach(function (item, i) {
+        filter[i] ? result[0].push(item) : result[1].push(item);
+    });
+    return result;
+};
+console.log(splitToGroups(['beep', 'boop', 'foo', 'bar'], [true, true, false, true]));

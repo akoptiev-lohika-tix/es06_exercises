@@ -139,3 +139,56 @@ const pad = (str: string, length: number, char = ' '): string => {
 };
 
 console.log(pad(String(42), 6, '0'));
+
+// 16. Write a JavaScript program to create an array of key-value pair arrays from a given object.
+
+const object_to_pairs = (obj: Record<string, any>): Record<string, any>[] =>
+    Object.entries(obj);
+
+console.log(object_to_pairs({ a: 1, b: 2, c: 3 }));
+
+// 17. Write a JavaScript program to remove the key-value pairs corresponding to the given keys from an object.
+const omit = (obj: Record<string, any>, arr: string[]): Record<string, any> =>
+    Object.entries(obj).filter((item) => item[0] !== arr[0]);
+
+console.log(omit({ a: 1, b: '2', c: 3 }, ['b']));
+
+// 18. Write a JavaScript program to create an object from the given key-value pairs.
+const object_From_Pairs = (arr: [string, any][]): Record<string, any> => {
+    const result: Record<string, any> = {};
+    arr.forEach((item) => {
+        result[item[0]] = item[1];
+    });
+
+    return result;
+};
+
+console.log(
+    object_From_Pairs([
+        ['a', 1],
+        ['b', 2],
+    ])
+);
+
+// 19.Write a JavaScript program to remove falsey values from a given array.
+const removeFalsey = (arr: any[]): any[] =>
+    arr.filter((item) => Boolean(item));
+console.log(removeFalsey([0, 1, false, 2, '', 3, 'a', 'e', 23, NaN, 's', 34]));
+
+// 20. Write a JavaScript program to split values into two groups, if an element in filter is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
+const splitToGroups = (
+    arr: string[],
+    filter: boolean[]
+): [string[], string[]] => {
+    const result: [string[], string[]] = [[], []];
+
+    arr.forEach((item, i) => {
+        filter[i] ? result[0].push(item) : result[1].push(item);
+    });
+
+    return result;
+};
+
+console.log(
+    splitToGroups(['beep', 'boop', 'foo', 'bar'], [true, true, false, true])
+);
